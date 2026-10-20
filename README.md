@@ -2,6 +2,10 @@
 
 A Claude skill for drafting and revising short fiction so that its narrative choices do not follow the defaults that a 2026 study found in AI-written stories. The skill has Claude draft from a premise, outline the draft along the study's narrative dimensions, and audit it against 11 named AI-leaning defaults and a list of human-leaning choices. Each flagged default needs a quoted line or scene as evidence, or it is not flagged. Revisions change structure (who drives the plot, what is withheld, how time is ordered, which characters appear in dialogue) rather than swapping words. The skill then checks for overcorrection, meaning changes that add variety without serving the story. It targets narrative choices only, not sentence-level style, because text classifiers still catch AI prose at 99.7% or higher.
 
+![Animated workflow: draft, outline, audit, revise, check overcorrection, reread](assets/workflow.gif)
+
+*The skill's six-step workflow.*
+
 ## Credit
 
 This skill is based entirely on the research of the StoryScope authors. This repository is **not affiliated with, endorsed by, or maintained by** the paper's authors or their institutions.
@@ -90,6 +94,27 @@ Narrative features alone retain over 97% of the Narrative + Style performance on
 - **Topic.** Binary macro-F1 ranges from 90.0 (mystery/detective) to 96.2 (historical). The Kruskal-Wallis test found no significant topic differences (H = 4.69, p = 0.46).
 - **Memorization.** The screen flagged 0.70% of generated-story comparisons as high risk. Dropping high-risk prompts moved Narrative from 93.18 to 93.23 binary and from 68.42 to 68.68 six-way.
 - **Dimension ablations (Table 8).** Trained alone, Agents scored best at 80.2 binary macro-F1. Removing Agents cost 1.2 points, the largest single drop. No dimension was sufficient alone or necessary alone.
+
+### Figures
+
+Redrawn from the paper's published numbers (not copied from the PDF).
+
+**Pipeline**
+
+![StoryScope pipeline](assets/pipeline.png)
+
+**Where AI and human fiction differ most** (Table 16)
+
+![AI vs human feature prevalence](assets/ai-vs-human-features.png)
+
+**Detection results** (Table 2): narrative features alone reach 93.2% macro-F1.
+
+![Detection results](assets/detection-results.png)
+
+**Authorship attribution** (Figure 3): mistakes cluster among the AI models.
+
+![Confusion matrix](assets/confusion-matrix.png)
+
 
 ## How the paper was applied to the skill
 
