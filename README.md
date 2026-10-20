@@ -218,7 +218,7 @@ The writers' edits fell into seven categories: awkward word choice (~28%), poor 
 
 A single skill holding all five papers would run to about 3,000 words. Models tend to skim the middle of long instructions and compress checklists, so the material is split:
 
-- **Each skill stays short.** Each is under about 1,100 words and covers one level of writing.
+- **Each skill stays short.** Each is between about 650 and 1,200 words and covers one level of writing.
 - **The audits force full coverage.** Each one requires a table with **one row per check**, containing a quoted line or the word "absent", and forbids skipping or merging rows. A skipped check therefore shows up as a missing row.
 - **Each rule is concrete.** It has a number and an example, not a vague instruction like "add variety".
 - **The skills point to each other.** Each says which skill comes next, so the steps run in the right order.
