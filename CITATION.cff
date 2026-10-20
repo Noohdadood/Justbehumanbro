@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "This skill is derived from the StoryScope paper. Please cite the original authors."
+title: "human-narrative-craft"
+references:
+  - type: article
+    title: "StoryScope: Investigating Idiosyncrasies in AI Fiction"
+    authors:
+      - family-names: Russell
+        given-names: Jenna
+      - family-names: Rajendhran
+        given-names: Rishanth
+      - family-names: Pham
+        given-names: Chau Minh
+      - family-names: Iyyer
+        given-names: Mohit
+      - family-names: Wieting
+        given-names: John
+    conference:
+      name: "COLM 2026"
+    identifiers:
+      - type: other
+        value: "arXiv:2604.03136"
+    url: "https://arxiv.org/abs/2604.03136"
