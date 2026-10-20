@@ -1,0 +1,419 @@
+<title>Human Writing Skills</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a proof sheet. One reading column with wide "margin notes" on desktop; red pencil marks only where something is being cut. */
+:root{
+  --paper:#f3f5f4; --sheet:#fbfcfb; --ink:#14232a; --muted:#56656b; --rule:#d6dddb;
+  --teal:#1f6f6b; --teal-soft:#dcebe9; --pencil:#c2412d; --pencil-soft:#f6dfd9; --gold:#a8831a;
+  --plate:#ffffff;
+  --f-display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1719; --sheet:#152024; --ink:#e3ebe9; --muted:#9aaaa8; --rule:#2a3a3e;
+  --teal:#5fbfb6; --teal-soft:#1c3634; --pencil:#ef7a64; --pencil-soft:#3a2420; --gold:#d8b54e; --plate:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1719; --sheet:#152024; --ink:#e3ebe9; --muted:#9aaaa8; --rule:#2a3a3e;
+  --teal:#5fbfb6; --teal-soft:#1c3634; --pencil:#ef7a64; --pencil-soft:#3a2420; --gold:#d8b54e; --plate:#ffffff; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.01em}
+h3{font-size:21px;font-weight:700}
+p{margin:0}
+a{color:var(--teal);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+code,.mono{font-family:var(--f-mono);font-size:.84em}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:72px;border-top:1px solid var(--rule)}
+.lede{max-width:62ch;color:var(--muted);margin-top:14px}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;flex-wrap:wrap}
+.top .brand{font-family:var(--f-display);font-weight:800;font-size:18px}
+.top nav{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f-display);font-size:15px}
+.top nav a{color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--teal)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:40px 72px}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-family:var(--f-body);font-style:italic;font-weight:400;color:var(--teal)}
+.hero .lede{font-size:20px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:24px;font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.hero-facts b{color:var(--ink);font-weight:600}
+.proof{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:26px 26px 22px;position:relative}
+.proof .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block}
+.proof .before{font-size:19px;color:var(--muted);position:relative;display:inline}
+.proof .before s{text-decoration:none;background-image:linear-gradient(var(--pencil),var(--pencil));background-repeat:no-repeat;background-position:0 58%;background-size:100% 2px;animation:strike 1.1s .5s both ease-out}
+@keyframes strike{from{background-size:0 2px}to{background-size:100% 2px}}
+.proof .note{display:block;margin-top:10px;font-family:var(--f-mono);font-size:12px;color:var(--pencil)}
+.proof .after{margin-top:20px;font-size:21px;line-height:1.5;border-left:3px solid var(--teal);padding-left:14px}
+.proof .after-note{display:block;margin-top:8px;font-family:var(--f-mono);font-size:12px;color:var(--teal)}
+@media (prefers-reduced-motion:reduce){.proof .before s{animation:none}}
+
+/* flow */
+.flow{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) minmax(0,1.2fr);gap:18px;margin-top:36px;align-items:stretch}
+.step{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.step .k{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.step .name{font-family:var(--f-mono);font-weight:600;font-size:15px;color:var(--teal);word-break:break-word}
+.step.red .name{color:var(--pencil)}
+.step p{font-size:16px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.why{margin-top:28px;max-width:70ch;font-size:17px}
+
+/* checker */
+.checker{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:32px}
+textarea{width:100%;min-height:300px;resize:vertical;font-family:var(--f-body);font-size:17px;line-height:1.6;padding:16px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);color:var(--ink)}
+.out{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:16px;min-width:0;font-size:17px;line-height:1.7;overflow-wrap:anywhere}
+mark{background:var(--pencil-soft);color:var(--ink);border-bottom:2px solid var(--pencil);padding:0 2px;border-radius:2px}
+mark.t{background:var(--teal-soft);border-bottom-color:var(--teal)}
+.controls{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button{font-family:var(--f-display);font-weight:700;font-size:15px;padding:9px 16px;border-radius:5px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+button.ghost{background:transparent;color:var(--ink)}
+button:hover{opacity:.88}
+.stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink)}
+.flags{margin-top:18px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.src{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.caveat{margin-top:14px;font-size:15px;color:var(--muted);max-width:70ch}
+
+/* research */
+.papers{display:flex;flex-direction:column;gap:56px;margin-top:40px}
+.paper{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px}
+.paper .meta{display:flex;flex-direction:column;gap:10px;min-width:0}
+.venue{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:3px 8px;border-radius:3px;border:1px solid var(--rule);color:var(--muted);width:fit-content}
+.venue.peer{border-color:var(--teal);color:var(--teal)}
+.authors{font-size:15px;color:var(--muted)}
+.paper ul{margin:4px 0 0;padding-left:20px;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.feeds{font-family:var(--f-mono);font-size:12px;color:var(--teal)}
+.bars{display:flex;flex-direction:column;gap:10px;min-width:0}
+.bars .cap{font-family:var(--f-display);font-weight:700;font-size:16px;margin-bottom:4px}
+.bar{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.bar .lbl{color:var(--ink);line-height:1.3}
+.track{display:flex;flex-direction:column;gap:3px}
+.fill{height:12px;border-radius:2px;display:flex;align-items:center}
+.fill.ai{background:var(--pencil)} .fill.hu{background:var(--teal)} .fill.g{background:var(--gold)}
+.val{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.trackrow{display:flex;align-items:center;gap:8px}
+.legend{display:flex;gap:16px;font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:2px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.src-line{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+
+/* figures */
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:32px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure .plate{background:var(--plate);border:1px solid var(--rule);border-radius:6px;padding:10px}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:14px;color:var(--muted)}
+figure.wide{grid-column:1/-1}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:32px}
+.skill{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.skill .name{font-family:var(--f-mono);font-weight:600;color:var(--teal);font-size:15px;word-break:break-word}
+.skill p{font-size:16px}
+.skill .wc{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.reader{margin-top:22px;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--rule);padding:8px 8px 0;overflow-x:auto}
+.tabs button{background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;border-radius:0;font-family:var(--f-mono);font-weight:600;font-size:13px;padding:10px 12px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.reader pre{margin:0;padding:18px;max-height:520px;overflow:auto;font-family:var(--f-mono);font-size:13px;line-height:1.55;white-space:pre-wrap;color:var(--ink)}
+.reader .bar2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--rule);flex-wrap:wrap}
+.reader .bar2 span{font-size:14px;color:var(--muted)}
+.install{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+.install div{min-width:0}
+.install pre{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px;overflow-x:auto;font-family:var(--f-mono);font-size:13px;margin:8px 0 0}
+
+/* credits */
+.credits{margin-top:28px;overflow-x:auto}
+.credits td:first-child{font-weight:600;min-width:16em}
+.fine{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px}
+.fine div{min-width:0}
+.fine ul{padding-left:20px;margin:10px 0 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+footer{padding-block:40px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:860px){
+  .hero,.checker,.paper,.fine,.install{grid-template-columns:minmax(0,1fr)}
+  .flow,.skills{grid-template-columns:minmax(0,1fr)}
+  .gallery{grid-template-columns:minmax(0,1fr)}
+  section{padding-block:52px}
+  .bar{grid-template-columns:minmax(0,9em) minmax(0,1fr)}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">Human Writing Skills</span>
+    <nav aria-label="Sections">
+      <a href="#check">Checker</a><a href="#skills-flow">How it works</a><a href="#research">Research</a><a href="#figures">Figures</a><a href="#skills">Skills</a><a href="#credits">Credits</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Three Claude skills · five research papers</p>
+      <h1 style="margin-top:14px">Revise the <em>choices</em>, not just the words.</h1>
+      <p class="lede">An editing library for AI-assisted drafts. Each rule comes from a measured difference between human and AI writing, and each skill must quote its evidence before it changes a line.</p>
+      <div class="hero-facts">
+        <span><b>93.2%</b> AI fiction detected from story structure alone</span>
+        <span><b>8,035</b> professional edits analysed</span>
+        <span><b>1 in 300</b> expert misses on nonfiction</span>
+      </div>
+    </div>
+    <div class="proof" aria-label="Example revision">
+      <span class="tag">Draft · last line of a story</span>
+      <p class="before"><s>Amidst the intricate tapestry of her grief, she finally realized that love never truly ends.</s></p>
+      <span class="note">✕ stated lesson (AI 77% · human 52%) · tapestry 155× · amidst 100×</span>
+      <p class="after">She left his reading glasses in the kitchen drawer, next to the batteries and the takeout menus.</p>
+      <span class="after-note">✓ the image carries the meaning; the reader does the rest</span>
+    </div>
+  </div>
+
+  <section id="check">
+    <p class="eyebrow">Try it</p>
+    <h2 style="margin-top:10px">Pattern checker</h2>
+    <p class="lede">Paste a paragraph. The checker marks patterns the papers found AI text overuses. Every mark is a prompt to look again, not a verdict. Humans use these words too, and annotators who leaned on vocabulary alone made the most mistakes.</p>
+    <div class="checker">
+      <div>
+        <label for="input" class="sr">Text to check</label>
+        <textarea id="input" spellcheck="false">Amidst the vibrant chaos of the market, Sarah felt her chest tighten, the scent of cardamom and diesel wrapping around her like a memory. It was not only a place of commerce but also a living testament to resilience and determination. "This market is the heart of our community," notes local historian Emily Carter. As the sun set, Sarah realized that home is not just a place, it's a feeling, a promise, a quiet act of belonging.</textarea>
+        <div class="controls">
+          <button id="run" type="button">Check text</button>
+          <button id="sample" class="ghost" type="button">Load a human-style sample</button>
+          <button id="clear" class="ghost" type="button">Clear</button>
+        </div>
+      </div>
+      <div>
+        <div class="out" id="out" aria-live="polite"></div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+    <div class="flags" id="flags"></div>
+    <p class="caveat">The checker runs in your browser and sends nothing anywhere. It can't see structure (subplots, chronology, how a piece ends), which is where the strongest signal is. That part needs the skills themselves.</p>
+  </section>
+
+  <section id="skills-flow">
+    <p class="eyebrow">How it works</p>
+    <h2 style="margin-top:10px">Structure first, then the line edit</h2>
+    <div class="flow">
+      <div class="step"><span class="k">In</span><span class="name" style="color:var(--ink);font-family:var(--f-display)">Your draft</span><p>A story, an article, an essay, a cover letter.</p></div>
+      <div class="stack">
+        <div class="step"><span class="k">Step 1 · stories</span><span class="name">human-narrative-craft</span><p>Audits 30+ structure defaults: stated themes, no subplots, tidy inward endings, linear time.</p></div>
+        <div class="step"><span class="k">Step 1 · nonfiction</span><span class="name">human-nonfiction-voice</span><p>Openings, endings, real quotes, “says”, verifiable specifics. Never invents a source.</p></div>
+      </div>
+      <div class="step red"><span class="k">Step 2 · any genre</span><span class="name">ai-prose-line-edit</span><p>LAMP's seven problem categories, line by line. Then grammar density (“-ing” clauses, nominalizations), then flagged vocabulary.</p></div>
+    </div>
+    <p class="why">The order matters. StoryScope removed clichés and purple prose from AI stories and found detection barely moved, from 95.5% to 93.9% macro-F1. Polishing sentences can't fix structure, so structure goes first.</p>
+  </section>
+
+  <section id="research">
+    <p class="eyebrow">The evidence</p>
+    <h2 style="margin-top:10px">Five papers, what each found</h2>
+    <p class="lede">The charts are redrawn from each paper's published numbers. Venue labels show which papers have passed peer review.</p>
+    <div class="papers" id="papers"></div>
+  </section>
+
+  <section id="figures">
+    <p class="eyebrow">Figures</p>
+    <h2 style="margin-top:10px">Diagrams and charts</h2>
+    <div class="gallery">
+      <figure class="wide"><div class="plate"><img src="assets/pipeline.png" alt="StoryScope pipeline: data, templates, comparison, features, annotation, classification" loading="lazy"></div><figcaption>The StoryScope pipeline. Redrawn from Russell et al., COLM 2026, Figure 1.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/confusion-matrix.png" alt="Six-way confusion matrix; errors cluster among AI models" loading="lazy"></div><figcaption>Who wrote it? Human 88.5% correct; Gemini, DeepSeek and Kimi get confused with each other.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/russell-detection.png" alt="True-positive rates: expert majority 99.3%, Pangram 99.3%, RADAR 15.3%" loading="lazy"></div><figcaption>Expert readers matched the best commercial detector. Russell et al., ACL 2025.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/reinhart-words.png" alt="GPT-4o favourite words: camaraderie 162x, tapestry 155x" loading="lazy"></div><figcaption>GPT-4o's most over-used words, as multiples of the human rate. Reinhart et al.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/lamp-edit-ops.png" alt="Edit operations: replace 74%, delete 18%, insert 8%" loading="lazy"></div><figcaption>How professional writers fixed AI text. LAMP.</figcaption></figure>
+      <figure class="wide"><div class="plate"><img src="assets/papers-to-skills.png" alt="Map of which paper feeds which skill" loading="lazy"></div><figcaption>Which paper feeds which skill.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/skill-suite.gif" alt="Animation of a draft passing through the three skills" loading="lazy"></div><figcaption>A draft moving through the suite.</figcaption></figure>
+      <figure><div class="plate"><img src="assets/fiction-workflow.gif" alt="Animation of the six-step fiction workflow" loading="lazy"></div><figcaption>The fiction skill's six steps.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="eyebrow">The library</p>
+    <h2 style="margin-top:10px">Read and copy the skills</h2>
+    <div class="skills">
+      <div class="skill"><span class="name">human-narrative-craft</span><p>For short fiction. An outline, a full-row audit table, then structural revision with an overcorrection check.</p><span class="wc">StoryScope · ~1,170 words</span></div>
+      <div class="skill"><span class="name">human-nonfiction-voice</span><p>For articles and essays. Expert-reader clues as an audit, plus a hard rule against invented quotes and sources.</p><span class="wc">Russell et al. · ~670 words</span></div>
+      <div class="skill"><span class="name">ai-prose-line-edit</span><p>For any genre. Three passes: LAMP categories, grammar density, flagged vocabulary.</p><span class="wc">LAMP · Reinhart · Rallapalli · ~950 words</span></div>
+    </div>
+    <div class="reader">
+      <div class="tabs" role="tablist" aria-label="Skill files">
+        <button role="tab" id="tab-0" aria-selected="true" data-i="0" type="button">human-narrative-craft</button>
+        <button role="tab" id="tab-1" aria-selected="false" data-i="1" type="button">human-nonfiction-voice</button>
+        <button role="tab" id="tab-2" aria-selected="false" data-i="2" type="button">ai-prose-line-edit</button>
+      </div>
+      <pre id="skilltext" role="tabpanel" tabindex="0">Loading…</pre>
+      <div class="bar2"><span id="copymsg">SKILL.md, ready to paste into a skill folder.</span><button id="copy" type="button">Copy SKILL.md</button></div>
+    </div>
+    <div class="install">
+      <div><h3>Claude Code</h3><pre>mkdir -p ~/.claude/skills/human-narrative-craft
+# paste the copied SKILL.md into
+# ~/.claude/skills/human-narrative-craft/SKILL.md
+# repeat for the other two</pre></div>
+      <div><h3>Claude.ai</h3><p style="margin-top:8px;font-size:16px">Save each SKILL.md in a folder named after the skill, zip the folder, and upload it in Settings under Capabilities, then Skills.</p></div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <p class="eyebrow">Credits</p>
+    <h2 style="margin-top:10px">The research belongs to these authors</h2>
+    <p class="lede">This library is not affiliated with any of them. It turns their published findings into editing instructions. Please cite the papers.</p>
+    <div class="credits">
+      <table>
+        <thead><tr><th>Paper</th><th>Authors</th><th>Venue</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://arxiv.org/abs/2604.03136">StoryScope: Investigating Idiosyncrasies in AI Fiction</a></td><td>Jenna Russell, Rishanth Rajendhran, Chau Minh Pham, Mohit Iyyer (University of Maryland); John Wieting (Google DeepMind)</td><td>COLM 2026</td></tr>
+          <tr><td><a href="https://aclanthology.org/2025.acl-long.267.pdf">People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text</a></td><td>Jenna Russell, Marzena Karpinska, Mohit Iyyer</td><td>ACL 2025</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2409.14509">Can AI writing be salvaged? (LAMP)</a></td><td>Tuhin Chakrabarty, Philippe Laban, Chien-Sheng Wu</td><td>arXiv preprint</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2410.16107">Do LLMs write like humans? Variation in grammatical and rhetorical styles</a></td><td>Alex Reinhart, Ben Markey, Michael Laudenbach, Kachatad Pantusen, Ronald Yurko, Gordon Weinberg, David West Brown</td><td>arXiv preprint</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2604.14111">Interpretable Stylistic Variation in Human and LLM Writing</a></td><td>Swati Rallapalli, Shannon Gallagher, Ronald Yurko, Tyler Brooks, Chuck Loughin, Michele Sezgin, Violet Turri</td><td>arXiv preprint</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fine">
+      <div><h3>Limitations</h3><ul>
+        <li>The skills haven't been tested yet against real drafts, with and without the skill.</li>
+        <li>Word lists come from 2024–2025 models (GPT-4o, Llama 3) and will drift.</li>
+        <li>Narrow evidence: stories of about 5,000 words, articles under 1,000 words, LAMP mostly literary fiction.</li>
+        <li>Three of the five sources are preprints.</li>
+        <li>The papers disagree on contractions and downtoners, so the skills make no rule about either.</li>
+      </ul></div>
+      <div><h3>Responsible use</h3><ul>
+        <li>For better writing, not for hiding authorship. Disclose AI help where coursework, contests, journalism or publishers require it.</li>
+        <li>The nonfiction skill forbids invented quotes, people, statistics and sources, and leaves [QUOTE NEEDED] instead.</li>
+        <li>In the study, Pangram still caught 99.3% of “humanized” articles. Trained readers catch most AI text too.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <footer>Human Writing Skills · charts redrawn from the cited papers' published numbers · original figures belong to their authors.</footer>
+</div>
+
+<script>
+(function(){
+  // ---------- research data ----------
+  const papers=[
+    {t:"StoryScope",full:"StoryScope: Investigating Idiosyncrasies in AI Fiction",a:"Russell, Rajendhran, Pham, Iyyer, Wieting",v:"COLM 2026",peer:true,feeds:"human-narrative-craft",
+     pts:["10,272 human short stories, each rewritten from the same prompt by Claude, GPT, Gemini, DeepSeek and Kimi: 61,608 stories in all.","Story structure alone detects AI at 93.2% macro-F1. Style edits barely move it.","The human version was the most unusual of the six in 57.8% of prompts (chance is 16.7%).","Characters are the strongest single dimension (80.2%), but no dimension works alone."],
+     chart:{cap:"Share of stories with each feature",pair:true,src:"Table 16",max:90,rows:[["Narrator states the theme",77,52],["No subplots",79,57],["Emotion shown through the body",81,38],["Smell imagery",82,57],["Resolved by the protagonist's choice",69,46],["Morally ambivalent protagonist",38,59],["Named, explicit references",24,47]]}},
+    {t:"Expert detectors",full:"People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text",a:"Russell, Karpinska, Iyyer",v:"ACL 2025",peer:true,feeds:"human-nonfiction-voice",
+     pts:["300 nonfiction articles under 1,000 words, each paired with a GPT-4o, Claude 3.5 or o1-Pro version.","Five heavy ChatGPT users, voting together, misclassified 1 of 300. Non-experts were near chance.","Placeholder names: Emily or Sarah in 63% of GPT-4o articles and 70% of Claude's.","Humans repeat “says”; AI varies it with “notes” and “explains”."],
+     chart:{cap:"Share of expert explanations citing each clue",src:"Table 3",max:60,cls:"hu",rows:[["Vocabulary",53.1],["Sentence structure",35.9],["Grammar & punctuation",24.8],["Originality",23.7],["Quotes",22.3],["Clarity",19.5]]}},
+    {t:"LAMP",full:"Can AI writing be salvaged? Mitigating idiosyncrasies through edits",a:"Chakrabarty, Laban, Wu",v:"arXiv preprint",peer:false,feeds:"ai-prose-line-edit",
+     pts:["Professional writers made 8,035 edits to 1,057 paragraphs from GPT-4o, Claude 3.5 Sonnet and Llama 3.1 70B.","Seven categories covered almost everything (only 10 edits needed “other”).","74% of edits replaced text, 18% deleted it, and only 8% inserted new text.","Lower-quality paragraphs needed more edits: 10.2 at a score of 2, 2.4 at a score of 10."],
+     chart:{cap:"Share of edits by category (approx.)",src:"Fig. 5a",max:32,cls:"ai",pct:"~",rows:[["Awkward word choice",28],["Poor sentence structure",20],["Redundant exposition",18],["Cliché",17]]}},
+    {t:"Do LLMs write like humans?",full:"Do LLMs write like humans? Variation in grammatical and rhetorical styles",a:"Reinhart, Markey, Laudenbach, Pantusen, Yurko, Weinberg, Brown",v:"arXiv preprint",peer:false,feeds:"ai-prose-line-edit",
+     pts:["Six models continued human texts “in the same style, tone, and diction”, compared on 66 grammatical features.","Instruction-tuned models drift further from human style than base models. Bigger models are no closer.","“Tapestry” appears in 23% of GPT-4o texts, and “amidst” in 27%."],
+     chart:{cap:"GPT-4o rate ÷ human rate",src:"text, Table 1",max:5.6,ratio:true,rows:[["Present participial clauses",5.3],["“That” clauses as subject",2.6],["Nominalizations",2.1],["Phrasal coordination",1.9],["Agentless passive",0.5]]}},
+    {t:"Stylistic variation",full:"Interpretable Stylistic Variation in Human and LLM Writing Across Genres, Models, and Decoding Strategies",a:"Rallapalli, Gallagher, Yurko, Brooks, Loughin, Sezgin, Turri",v:"arXiv preprint",peer:false,feeds:"ai-prose-line-edit",
+     pts:["11 models, 8 genres and 4 decoding strategies, on 467,985 texts with 67 grammatical features.","LLMs overuse “that”-subject clauses, contractions, nominalizations, and “which” clauses that comment on a whole sentence.","LLMs suppress rare constructions humans use: concessive “though”, “no one” / “neither”, “in which”, “well”, “anyway”.","Genre shapes style more than whether a human or a model wrote it."],
+     chart:null}
+  ];
+  const host=document.getElementById("papers");
+  const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  papers.forEach(p=>{
+    const el=document.createElement("article"); el.className="paper";
+    let chart="";
+    if(p.chart){
+      const c=p.chart;
+      const rows=c.rows.map(r=>{
+        if(c.pair){
+          return `<div class="bar"><span class="lbl">${esc(r[0])}</span><div class="track">
+            <div class="trackrow"><div class="fill ai" style="width:${r[1]/c.max*100}%"></div><span class="val">AI ${r[1]}%</span></div>
+            <div class="trackrow"><div class="fill hu" style="width:${r[2]/c.max*100}%"></div><span class="val">Human ${r[2]}%</span></div></div></div>`;
+        }
+        const cls=c.ratio?(r[1]>=1?"ai":"hu"):c.cls;
+        const label=c.ratio?`${r[1]}×`:`${c.pct||""}${r[1]}%`;
+        return `<div class="bar"><span class="lbl">${esc(r[0])}</span><div class="trackrow"><div class="fill ${cls}" style="width:${r[1]/c.max*100}%"></div><span class="val">${label}</span></div></div>`;
+      }).join("");
+      const legend=c.pair?`<div class="legend"><span><i style="background:var(--pencil)"></i>AI (5-model avg.)</span><span><i style="background:var(--teal)"></i>Human</span></div>`:
+        c.ratio?`<div class="legend"><span><i style="background:var(--pencil)"></i>overused</span><span><i style="background:var(--teal)"></i>underused</span></div>`:"";
+      chart=`<div class="bars"><div class="cap">${esc(c.cap)}</div>${legend}${rows}<span class="src-line">Source: ${esc(p.t)}, ${esc(c.src)}. Redrawn.</span></div>`;
+    } else {
+      chart=`<div class="bars"><div class="cap">No chart</div><p style="font-size:16px;color:var(--muted)">This preprint gives its ratios only as plots, with no values in the text, so there are no numbers to redraw. Its findings appear in the line-edit skill as directions (overused vs. underused), not as quantities.</p></div>`;
+    }
+    el.innerHTML=`<div class="meta"><span class="venue ${p.peer?"peer":""}">${esc(p.v)}${p.peer?" · peer-reviewed":""}</span><h3>${esc(p.full)}</h3><span class="authors">${esc(p.a)}</span><ul>${p.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><span class="feeds">→ ${esc(p.feeds)}</span></div>${chart}`;
+    host.appendChild(el);
+  });
+
+  // ---------- checker ----------
+  const words=["tapestry","tapestries","delve","delves","delved","delving","camaraderie","intricate","intricately","underscore","underscores","underscored","unspoken","amidst","palpable","solace","fleeting","unravel","unravels","unraveled","unravelled","grapple","grapples","grappled","grappling","ignite","ignites","ignited","vibrant","cacophony","testament","crucial","showcase","showcases","showcased","unease","pang","waft","wafted","wafting"];
+  const stopIng=new Set(["during","nothing","something","anything","everything","morning","evening","thing","things","king","ring","spring","string","bring","sing","wing","ceiling","sibling","ping","sting","swing","cling"]);
+  const rules=[
+    {name:"Flagged word",src:"Reinhart; Russell",cls:"",re:new RegExp("\\b("+words.join("|")+")\\b","gi"),why:"Over-used by recent models. Keep it only if it's the exact word."},
+    {name:"“Not only… but also”",src:"Russell 2025",cls:"",re:/\bnot only\b[^.!?]*?\bbut also\b/gi,why:"Experts cited this construction as a tell."},
+    {name:"“Not just X, it's Y”",src:"Russell 2025",cls:"",re:/\b(?:is|it'?s|this is|that'?s)\s+not\s+(?:just|only|merely)\b[^.!?]*?,\s*(?:it'?s|but)\b/gi,why:"A contrast frame experts flagged."},
+    {name:"Present participial clause",src:"Reinhart",cls:"t",re:/,\s+([a-z]+ing)\b/gi,test:m=>!stopIng.has(m[1].toLowerCase()),why:"GPT-4o uses these at 5.3× the human rate. Count them per paragraph."},
+    {name:"Placeholder name",src:"Russell 2025",cls:"",re:/\b(Emily|Sarah)\b/g,why:"Used in 63–70% of AI articles in the study. Use the real person's name."},
+    {name:"Attribution verb",src:"Russell 2025",cls:"t",re:/\b(notes|noted|explains|explained)\b/gi,why:"Human reporters repeat “says”."},
+    {name:"Stated lesson",src:"StoryScope",cls:"",re:/\b(realized|realised|learned|learnt|understood) that\b|\ba reminder that\b|\bthe true meaning\b/gi,why:"AI narrators state the theme in 77% of stories (humans 52%)."},
+    {name:"Smell as default sense",src:"StoryScope",cls:"t",re:/\b(scent|scents|aroma|odor|odour|smell|smells|smelled|whiff|stench)\b/gi,why:"Smell imagery in 82% of AI stories vs 57% of human ones. Fine if this character would notice it."},
+    {name:"Emotion through the body",src:"StoryScope",cls:"t",re:/\b(chest|throat|stomach|jaw)\s+(tighten(?:ed|s|ing)?|clench(?:ed|es)?|knot(?:ted|s)?|dropp?(?:ed|s)?)|\b(breath\s+caught|heart\s+(?:pounded|raced|hammered))\b/gi,why:"81% of AI stories vs 38% of human. Sometimes just name the feeling."},
+    {name:"Pair of abstractions",src:"Reinhart",cls:"t",re:/\b([a-z]+(?:ness|ity|ion|ance|ence|ment))\s+and\s+([a-z]+(?:ness|ity|ion|ance|ence|ment))\b/gi,why:"Nominalizations (2.1×) joined by phrasal coordination (1.9×)."}
+  ];
+  const $=id=>document.getElementById(id);
+  function check(){
+    const text=$("input").value;
+    const hits=[];
+    rules.forEach(r=>{ r.re.lastIndex=0; let m;
+      while((m=r.re.exec(text))){ if(r.test&&!r.test(m)) continue;
+        let s=m.index,e=m.index+m[0].length;
+        if(r.name==="Present participial clause"){ s=m.index+m[0].indexOf(m[1]); }
+        hits.push({s,e,r,txt:text.slice(s,e)}); if(m[0].length===0) r.re.lastIndex++; }});
+    hits.sort((a,b)=>a.s-b.s||b.e-a.e);
+    const kept=[]; let end=-1; hits.forEach(h=>{ if(h.s>=end){kept.push(h); end=h.e;} });
+    let html="",pos=0;
+    kept.forEach(h=>{ html+=esc(text.slice(pos,h.s))+`<mark class="${h.r.cls}" title="${esc(h.r.name)}">${esc(h.txt)}</mark>`; pos=h.e; });
+    html+=esc(text.slice(pos));
+    $("out").innerHTML=html.replace(/\n/g,"<br>")||'<span style="color:var(--muted)">Paste some text on the left.</span>';
+    const sents=text.split(/(?<=[.!?])\s+/).map(s=>s.trim()).filter(s=>/\w/.test(s));
+    const lens=sents.map(s=>s.split(/\s+/).length);
+    const n=lens.length, mean=n?lens.reduce((a,b)=>a+b,0)/n:0;
+    const sd=n>1?Math.sqrt(lens.reduce((a,b)=>a+(b-mean)**2,0)/(n-1)):0;
+    const wc=text.split(/\s+/).filter(Boolean).length;
+    $("stats").innerHTML=`<span><b>${wc}</b> words</span><span><b>${n}</b> sentences</span><span>mean length <b>${mean.toFixed(1)}</b></span><span>length spread <b>${sd.toFixed(1)}</b></span><span><b>${kept.length}</b> flags</span>`;
+    if(!kept.length){ $("flags").innerHTML=""; return; }
+    $("flags").innerHTML=`<table><thead><tr><th>Text</th><th>Pattern</th><th>Why it's flagged</th><th>Source</th></tr></thead><tbody>${kept.map(h=>`<tr><td>“${esc(h.txt)}”</td><td>${esc(h.r.name)}</td><td>${esc(h.r.why)}</td><td class="src">${esc(h.r.src)}</td></tr>`).join("")}</tbody></table>`;
+  }
+  const human="The ferry was late again, which nobody minded. Dad says the captain stops for coffee at Gimli, though he's never proved it. I counted eleven gulls on the rail. Then twelve. Mom didn't say anything about the house, and neither did I.";
+  $("run").addEventListener("click",check);
+  $("sample").addEventListener("click",()=>{$("input").value=human;check();});
+  $("clear").addEventListener("click",()=>{$("input").value="";check();$("input").focus();});
+  check();
+
+  // ---------- skill reader ----------
+  const files=["skills/human-narrative-craft/SKILL.md","skills/human-nonfiction-voice/SKILL.md","skills/ai-prose-line-edit/SKILL.md"];
+  const cache={}; let cur=0;
+  async function show(i){
+    cur=i;
+    document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(+b.dataset.i===i)));
+    $("skilltext").setAttribute("aria-labelledby","tab-"+i);
+    if(!cache[i]){
+      $("skilltext").textContent="Loading…";
+      try{ const r=await fetch(files[i]); if(!r.ok) throw new Error(r.status); cache[i]=await r.text(); }
+      catch(e){ $("skilltext").textContent="Couldn't load this file. It's also in the repository under "+files[i]+"."; return; }
+    }
+    if(cur===i) $("skilltext").textContent=cache[i];
+  }
+  document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener("click",()=>show(+b.dataset.i)));
+  $("copy").addEventListener("click",()=>{
+    const t=cache[cur]; if(!t) return;
+    const done=()=>{$("copymsg").textContent="Copied "+files[cur].split("/")[1]+"/SKILL.md";};
+    const fallback=()=>{const sel=window.getSelection(),rg=document.createRange();rg.selectNodeContents($("skilltext"));sel.removeAllRanges();sel.addRange(rg);$("copymsg").textContent="Selected. Press Ctrl+C or ⌘C to copy.";};
+    try{ navigator.clipboard.writeText(t).then(done,fallback); }catch(e){ fallback(); }
+  });
+  show(0);
+})();
+</script>
