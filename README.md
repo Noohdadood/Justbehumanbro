@@ -14,6 +14,8 @@ Three Claude skills that revise AI-assisted drafts using findings from published
 
 ---
 
+**Website:** open `index.html` (or enable GitHub Pages for this repo: Settings → Pages → Deploy from branch → `main` / root). It has a live AI-pattern checker, the research charts, and every skill to read and copy.
+
 ## Contents
 
 1. [Credits](#credits)
@@ -232,8 +234,8 @@ A single skill holding all five papers would run to about 3,000 words. Models te
 **Claude Code**
 
 ```bash
-git clone https://github.com/<you>/human-writing-skills.git
-cp -r human-writing-skills/skills/* ~/.claude/skills/
+git clone https://github.com/Noohdadood/Justbehumanbro.git
+cp -r Justbehumanbro/skills/* ~/.claude/skills/
 ```
 
 **Claude.ai:** zip each folder in `skills/` and upload it under Settings → Capabilities → Skills.
