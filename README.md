@@ -1,5 +1,7 @@
 # Human Writing Skills
 
+**🌐 Website: [noohdadood.github.io/Justbehumanbro](https://noohdadood.github.io/Justbehumanbro/)**. Try the live AI-pattern checker, browse the research charts, and copy any skill.
+
 Three Claude skills that revise AI-assisted drafts using findings from published research on how AI writing differs from human writing. Each rule in the skills traces back to a measured result in one of five papers, and each skill makes the model show its evidence before it changes anything.
 
 ![How the three skills work together](assets/skill-suite.gif)
@@ -13,8 +15,6 @@ Three Claude skills that revise AI-assisted drafts using findings from published
 > **Not affiliated with any of the authors below.** This repo turns their published findings into editing instructions. All credit for the research belongs to them. Please cite the papers, not this repo.
 
 ---
-
-**Website:** open `index.html` (or enable GitHub Pages for this repo: Settings → Pages → Deploy from branch → `main` / root). It has a live AI-pattern checker, the research charts, and every skill to read and copy.
 
 ## Contents
 
