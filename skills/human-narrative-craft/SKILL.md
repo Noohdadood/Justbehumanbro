@@ -7,6 +7,8 @@ description: Use when drafting or revising short fiction that should read as hum
 
 Based on StoryScope by Jenna Russell, Rishanth Rajendhran, Chau Minh Pham, Mohit Iyyer (University of Maryland) and John Wieting (Google DeepMind), COLM 2026, arXiv:2604.03136. The study compared 10,272 human short stories with 51,336 stories that five LLMs (Claude Sonnet 4.6, GPT-5.4, Gemini 3 Flash, DeepSeek V3.2, Kimi K2.5) wrote from the same prompts. Each story was scored on 304 discourse-level features.
 
+Scope: story structure. For sentence- and word-level problems, run `ai-prose-line-edit` after this skill.
+
 ## Core principle
 
 Narrative choices carry the signal. With every style feature removed, narrative features alone still separated human from AI stories at 93.2% macro-F1. Editing AI stories to remove clichés and purple prose barely changed that (95.5% before, 93.9% after). AI stories cluster tightly together in narrative space. Human stories are rarer: in 57.8% of prompts, the human version was the most unusual of the six. Revise the choices, not just the wording.
@@ -64,7 +66,7 @@ If you are one of these models, check the draft against your own fingerprint fir
 
 1. **Draft** from the premise without the checklist, so the story has its own logic.
 2. **Outline.** Summarize the draft along the paper's dimensions before judging it: agents (with emotion and motivation trajectories), social network, events and causality, plot (themes, stated moral, arc), setting, time (order, jumps), revelation (what is withheld, when surprises land), and perspective. Use the outline to judge structure rather than prose.
-3. **Audit.** For each default, quote the line or scene where it appears, or write "absent". Never flag a default without evidence.
+3. **Audit.** Output a table with one row per default from both lists above. In each row, quote the line or scene where it appears, or write "absent". Do not skip or merge rows, and never flag a default without evidence.
 4. **Revise.** Replace each flagged default with a specific alternative that fits these characters and this premise. Make structural changes where needed, such as reordering scenes, adding a subplot, or rewriting the ending. Cover several dimensions, starting with characters.
 5. **Check for overcorrection.** Remove any change that only adds variety: a gratuitous flashback, a decorative subplot, unearned ambiguity, or a name-drop the character wouldn't make. Every choice must serve the story.
 6. **Reread for specificity.** Look for at least one fitting real-world reference, one line only this character would say, and one turn the reader won't predict.
@@ -78,6 +80,6 @@ If you are one of these models, check the draft against your own fingerprint fir
 
 ## Limits
 
-- Surface style is still the stronger signal: text classifiers detected AI stories at 99.7% or higher. This skill covers narrative choices only.
+- Surface style is still the stronger signal: text classifiers detected AI stories at 99.7% or higher. This skill covers narrative choices only. Use `ai-prose-line-edit` for sentence-level style.
 - The evidence comes from stories of about 5,000 words by five specific models. Features were defined by GPT-5.1 and annotated by Gemini 3 Flash (κ = 0.84 vs human annotators; human–human κ = 0.74).
 - Results held across length-matched subsets and genres, but may not transfer to poetry, flash fiction, nonfiction, or newer models.

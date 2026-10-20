@@ -1,23 +1,26 @@
 cff-version: 1.2.0
-message: "This skill is derived from the StoryScope paper. Please cite the original authors."
-title: "human-narrative-craft"
+message: "These skills are derived from the papers listed under references. Please cite the original authors."
+title: "human-writing-skills"
 references:
-  - type: article
+  - type: conference-paper
     title: "StoryScope: Investigating Idiosyncrasies in AI Fiction"
-    authors:
-      - family-names: Russell
-        given-names: Jenna
-      - family-names: Rajendhran
-        given-names: Rishanth
-      - family-names: Pham
-        given-names: Chau Minh
-      - family-names: Iyyer
-        given-names: Mohit
-      - family-names: Wieting
-        given-names: John
-    conference:
-      name: "COLM 2026"
-    identifiers:
-      - type: other
-        value: "arXiv:2604.03136"
+    authors: [{family-names: Russell, given-names: Jenna}, {family-names: Rajendhran, given-names: Rishanth}, {family-names: Pham, given-names: Chau Minh}, {family-names: Iyyer, given-names: Mohit}, {family-names: Wieting, given-names: John}]
+    conference: {name: "COLM 2026"}
     url: "https://arxiv.org/abs/2604.03136"
+  - type: conference-paper
+    title: "People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text"
+    authors: [{family-names: Russell, given-names: Jenna}, {family-names: Karpinska, given-names: Marzena}, {family-names: Iyyer, given-names: Mohit}]
+    conference: {name: "ACL 2025"}
+    url: "https://aclanthology.org/2025.acl-long.267"
+  - type: article
+    title: "Can AI writing be salvaged? Mitigating Idiosyncrasies and Improving Human-AI Alignment in the Writing Process through Edits"
+    authors: [{family-names: Chakrabarty, given-names: Tuhin}, {family-names: Laban, given-names: Philippe}, {family-names: Wu, given-names: Chien-Sheng}]
+    url: "https://arxiv.org/abs/2409.14509"
+  - type: article
+    title: "Do LLMs write like humans? Variation in grammatical and rhetorical styles"
+    authors: [{family-names: Reinhart, given-names: Alex}, {family-names: Markey, given-names: Ben}, {family-names: Laudenbach, given-names: Michael}, {family-names: Pantusen, given-names: Kachatad}, {family-names: Yurko, given-names: Ronald}, {family-names: Weinberg, given-names: Gordon}, {family-names: Brown, given-names: David West}]
+    url: "https://arxiv.org/abs/2410.16107"
+  - type: article
+    title: "Interpretable Stylistic Variation in Human and LLM Writing Across Genres, Models, and Decoding Strategies"
+    authors: [{family-names: Rallapalli, given-names: Swati}, {family-names: Gallagher, given-names: Shannon}, {family-names: Yurko, given-names: Ronald}, {family-names: Brooks, given-names: Tyler}, {family-names: Loughin, given-names: Chuck}, {family-names: Sezgin, given-names: Michele}, {family-names: Turri, given-names: Violet}]
+    url: "https://arxiv.org/abs/2604.14111"
